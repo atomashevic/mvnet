@@ -1,14 +1,14 @@
-library(igraph) 
-library(qgraph)
+library(igraph)
+# library(qgraph)
 
 PlotBoK <- function(graph){
 # Plots an igraph object with vertices labeled by name and edges labeled by name.
 # If the graph has 4 vertices, a pre-defined layout is used, otherwise the
 # layout is generated using layout_nicely.
-# 
+#
 # Args:
 #   graph: an igraph object
-# 
+#
 # Returns:
 #   A plot of the igraph object with vertices labeled by name and edges labeled
 # by name.
@@ -26,11 +26,11 @@ PlotBoK <- function(graph){
   }
   if (nV == 4){
      l = rbind(c(0,2),c(1,1),c(1,3),c(2,2))
-  } 
-  else {
-     l = layout_nicely(graph) 
   }
-  plot.igraph(graph, 
+  else {
+     l = layout_nicely(graph)
+  }
+  plot.igraph(graph,
             vertex.label = V(graph)$name, vertex.label.color = "gray20",
             vertex.size = 20,
             edge.label = E(graph)$name,
@@ -44,14 +44,14 @@ PlotBoK <- function(graph){
 
 HasEulerianPath <- function(graph, start=NULL){
 # Determines whether an igraph object has an Eulerian path.
-# 
+#
 # Args:
 #   graph: an igraph object
 #   start: a character of length 1 representing the starting vertex (optional)
-# 
+#
 # Returns:
 #   TRUE if the graph has an Eulerian path, FALSE otherwise.
-# 
+#
 # Raises:
 #   An error if the graph is not an igraph object,
 # if start is not NULL or a character of length 1,
@@ -210,23 +210,23 @@ EstimateCrudeDensity <- function(data, width){
     d <- rep(0,length(x))
     for (i in 1:length(x)){ # loop over bin centers
         # compute binomial density estimate
-        d[i] <- sum(data > x[i] - width / 2 & data <= x[i] + width / 2) * h 
+        d[i] <- sum(data > x[i] - width / 2 & data <= x[i] + width / 2) * h
     }
     return(cbind(x,d))
 }
 
 
 LastRowWithSameDensity <- function(cbd, i){
-# Computes the index of the last row in a matrix with the same 
+# Computes the index of the last row in a matrix with the same
 #density value as the i-th row.
 #
 # Args:
-#   cbd: a matrix with two columns, where the first column contains 
+#   cbd: a matrix with two columns, where the first column contains
 # the bin centers and the second column contains the binomial density estimates.
 #   i: an integer value representing the index of the current row in the matrix.
 #
 # Returns:
-#   An integer value representing the index of the last row in the matrix 
+#   An integer value representing the index of the last row in the matrix
 # with the same density value as the i-th row.
 #
 # Raises:
@@ -245,7 +245,7 @@ LastRowWithSameDensity <- function(cbd, i){
 
 PlotCrudeDensity <- function(cbd,title = 'Density plot',x_label,x_min,x_max){
 # Plots a density plot with a step function.
-# 
+#
 # Args:
 #   cbd: a matrix with two columns, where the first column contains the bin centers and the second column contains the binomial density estimates. Output of crude_binomial_density_estimates.
 #   title: a character string
