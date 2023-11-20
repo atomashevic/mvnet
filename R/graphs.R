@@ -95,7 +95,7 @@ HasEulerianPath <- function(graph, start=NULL){
   return(has.eulerian.path)
 }
 
-check_CI <- function(graph) {
+CheckCI <- function(graph) {
   # Get the adjacency matrix of the graph
   adj_matrix <- as_adjacency_matrix(graph)
   
